@@ -1,46 +1,383 @@
+/* GENERAL */
 body {
   font-family: Arial, sans-serif;
-  margin: 20px;
   background: #F9F7F3;
   color: #2C3E4E;
+  margin: 0;
 }
 
-#photoGallery img {
-  width: 150px;
-  margin: 5px;
-  border-radius: 8px;
-}
 
+/* HEADER */
 header {
-  margin-bottom: 20px;
   background: #1E3E62;
   color: white;
   padding: 15px;
 }
 
-main {
+header h1 {
+  margin: 0;
+  font-size: 22px;
+}
+
+/* SEARCH BAR INSIDE HEADER */
+.search-bar {
+  margin-top: 10px;
   display: flex;
-  gap: 20px;
+  gap: 10px;
 }
 
-#countryInfo {
-  width: 30%;
+.search-bar input {
+  flex: 1;
+  padding: 8px;
 }
 
-#photoGallery {
-  width: 70%;
-  display: flex;
-  flex-wrap: wrap;
-}
-
-button {
+.search-bar button {
   background: #FFB347;
   border: none;
   padding: 8px 12px;
   cursor: pointer;
 }
 
-#countryInfo img {
-  display: block;
-  margin: 10px 0;
+/* MAIN LAYOUT */
+.container {
+  display: flex;  
+  gap: 20px;
+  padding: 20px;
+}
+
+/* LEFT PANEL */
+.left-panel {
+  width: 60%;
+}
+
+/* RIGHT PANEL */
+.right-panel {
+  width: 40%;
+  display: flex;
+  border-left: 3px solid #ddd;
+  padding-left: 15px;
+}
+
+/* TRIP SIDEBAR */
+.trip-sidebar {
+  width: 30%;
+}
+
+/* ITINERARY AREA */
+.itinerary-area {
+  width: 70%;
+}
+
+/* COUNTRY INFO */
+#countryInfo {
+  border: 2px solid #ccc;
+  padding: 15px;
+  margin-bottom: 15px;
+}
+
+/* ===== PHOTO GRID ===== */
+#photoGallery {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.photo-card {
+  position: relative;
+}
+
+.photo-card img {
+  width: 100%;
+  border-radius: 8px;
+}
+
+.photo-info {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  background: rgba(0,0,0,0.6);
+  color: white;
+
+  padding: 8px;
+  font-size: 12px;
+  border-radius: 0 0 8px 8px;
+}
+
+.photo-card {
+  position: relative;
+}
+
+/* SAVE BUTTON */
+.save-btn {
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  background: #FFB347;
+  border: none;
+  padding: 5px;
+  cursor: pointer;
+}
+
+/* SHORTLIST */
+.shortlist-section {
+  margin-top: 20px;
+  border-top: 2px solid #ccc;
+  padding-top: 10px;
+}
+
+#shortlistModal div {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+}
+
+.hidden {
+  display: none;
+}
+
+#shortlistModal {
+  background: white;
+  border-radius: 10px;
+  padding: 10px;
+  margin-top: 10px;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+
+/* TRIPS */
+.trip-section {
+  border: 2px solid #ccc;
+  padding: 10px;
+  margin-bottom: 15px;
+}
+
+.trip-item {
+  padding: 5px;
+  border-bottom: 1px solid #ddd;
+  cursor: pointer;
+}
+
+.trip-item:hover {
+  background: #eee;
+}
+
+.active-trip {
+  background: #dff0d8;
+  font-weight: bold;
+}
+
+/* ITINERARY */
+.itinerary-section {
+  border: 2px solid #ccc;
+  padding: 10px;
+}
+
+.itinerary-section h3 {
+  margin-top: 0;
+}
+
+.itinerary-section div {
+  border: 1px solid #aaa;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.itinerary-section ul {
+  padding-left: 20px;
+}
+
+/* BUTTONS */
+button {
+  background: #FFB347;
+  border: none;
+  padding: 6px 10px;
+  cursor: pointer;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+
+.search-bar input {
+  flex: 1;
+  padding: 10px;
+  border-radius: 6px;
+  border: none;
+}
+
+.search-bar button {
+  padding: 10px 15px;
+  border-radius: 6px;
+  background: #FFB347;
+  border: none;
+  font-weight: bold;
+}
+
+/* ===== LAYOUT ===== */
+.container {
+  display: flex;
+  gap: 25px;
+  padding: 25px;
+}
+
+/* LEFT PANEL */
+.left-panel {
+  width: 60%;
+}
+
+/* RIGHT PANEL */
+.right-panel {
+  width: 40%;
+  display: flex;
+  flex-direction: column; /* 🔥 STACKED CARDS */
+  gap: 20px;
+}
+
+/* ===== CARD STYLE (REUSABLE) ===== */
+.card {
+  background: white;
+  border-radius: 10px;
+  padding: 15px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+/* ===== COUNTRY INFO ===== */
+#countryInfo {
+  margin-bottom: 15px;
+}
+
+
+
+.photo-card {
+  position: relative;
+  transition: transform 0.2s;
+}
+
+.photo-card:hover {
+  transform: scale(1.03);
+}
+
+.photo-card img {
+  width: 100%;
+  border-radius: 8px;
+}
+
+/* SAVE BUTTON */
+.save-btn {
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+  background: #FFB347;
+  border: none;
+  padding: 5px 8px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* ===== SHORTLIST ===== */
+.shortlist-section {
+  margin-top: 20px;
+}
+
+.shortlist-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 6px 0;
+}
+
+/* ===== TRIPS ===== */
+.trip-item {
+  padding: 8px;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-bottom: 5px;
+}
+
+.trip-item:hover {
+  background: #eee;
+}
+
+.active-trip {
+  background: #dff0d8;
+  font-weight: bold;
+}
+
+/* ===== ITINERARY ===== */
+.day-card {
+  background: #f4f4f4;
+  padding: 10px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+.day-card h4 {
+  margin: 0 0 5px;
+}
+
+/* ===== BUTTONS ===== */
+button {
+  cursor: pointer;
+  border: none;
+}
+
+button:hover {
+  opacity: 0.85;
+}
+
+/* ===== MOBILE DESIGN ===== */
+@media (max-width: 768px) {
+
+  .container {
+    flex-direction: column;
+    padding: 15px;
+  }
+
+  .left-panel,
+  .right-panel {
+    width: 100%;
+  }
+
+  /* Stack cards nicely */
+  .right-panel {
+    gap: 15px;
+  }
+
+  /* Photos: 2 per row */
+  #photoGallery {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Smaller header */
+  header {
+    padding: 10px;
+  }
+
+  .search-bar input {
+    padding: 8px;
+  }
+
+  .search-bar button {
+    padding: 8px;
+  }
+}
+
+/* Extra small screens */
+@media (max-width: 480px) {
+
+  /* Photos: 1 per row */
+  #photoGallery {
+    grid-template-columns: 1fr;
+  }
+
+  header h1 {
+    font-size: 18px;
+  }
 }
