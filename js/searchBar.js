@@ -10,7 +10,7 @@ export function initSearch() {
 
   console.log("Elements found:", btn, input); 
 
-  // 🚨 If elements are missing, stop here
+  // If elements are missing, stop here
   if (!btn || !input) {
     console.error("Search elements not found");
     return;
@@ -42,7 +42,7 @@ btn.addEventListener("click", async () => {
   }
 });
 
-  // ✅ ENTER KEY SUPPORT
+  // ENTER KEY SUPPORT
   input.addEventListener("keydown", (e) => {
     if (e.key === "Enter") {
       console.log("ENTER PRESSED");

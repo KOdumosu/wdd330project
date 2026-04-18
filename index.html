@@ -11,7 +11,7 @@
   <header>
     <h1>WanderLens</h1>
 
-    <!-- ✅ SEARCH BAR (IMPORTANT FIX) -->
+    <!-- SEARCH BAR-->
     <div class="search-bar">
       <input id="searchInput" type="text" placeholder="Search country, city, or place..." />
       <button id="searchBtn">Search</button>
@@ -36,6 +36,7 @@
       <div class="shortlist-section">
         <h3>Shortlist</h3>
         <div id="shortlistModal"></div>
+        <button id="openShortlist">Open Shortlist</button>
       </div>
 
     </div>
@@ -56,6 +57,7 @@
     <div id="itineraryView"></div>
   </div>
 
+  <div id="toast" class="toast hidden"></div>
 </div>
 
   </main>
@@ -63,4 +65,12 @@
   <!-- scripts -->
   <script type="module" src="js/app.js"></script>
 
+  <div id="modal" class="modal hidden">
+  <div class="modal-content">
+    <h3 id="modalTitle">Enter Name</h3>
+    <input id="modalInput" type="text" />
+    <button id="modalSave">Save</button>
+    <button id="modalCancel">Cancel</button>
+  </div>
+</div>
 </body>

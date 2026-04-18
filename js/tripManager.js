@@ -17,31 +17,44 @@ export function renderTrips() {
 
   container.innerHTML = "";
 
+  if (data.trips.length === 0) {
+    container.innerHTML = "<p>No trips created yet.</p>";
+    return;
+  }
+
   data.trips.forEach(trip => {
     const div = document.createElement("div");
-   div.classList.add("trip-item");
+    div.classList.add("trip-item");
 
-if (trip.id === activeTripId) {
-  div.classList.add("active-trip");
-}
+    if (trip.id === activeTripId) {
+      div.classList.add("active-trip");
+    }
 
     div.innerHTML = `
       <strong>${trip.name}</strong>
-      ${trip.id === activeTripId ? "[Active]" : ""}
-      <button class="delete-trip" data-id="${trip.id}">Delete</button>
+      <button class="delete-trip">❌</button>
     `;
 
+    // Select Trip
     div.addEventListener("click", () => {
       activeTripId = trip.id;
       renderTrips();
       renderItinerary(trip.id);
     });
 
+    // Delete Trip
     div.querySelector(".delete-trip").addEventListener("click", (e) => {
-  e.stopPropagation(); // 🔥 prevent selecting trip
-  deleteTrip(trip.id);
-  renderTrips();
-});
+      e.stopPropagation();
+
+      deleteTrip(trip.id);
+
+      if (activeTripId === trip.id) {
+        activeTripId = null;
+        document.getElementById("itineraryView").innerHTML = "";
+      }
+
+      renderTrips();
+    });
 
     container.appendChild(div);
   });
