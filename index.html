@@ -2,75 +2,114 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>WanderLens</title>
+
+  <link rel="icon" type="image/png" href="assets/logo.png">
   <link rel="stylesheet" href="styles/main.css" />
 </head>
+
 <body>
 
   <!-- HEADER -->
   <header>
+  <div class="brand">
+    <img src="assets/logo.png" alt="WanderLens Logo" class="logo">
     <h1>WanderLens</h1>
+  </div>
 
-    <!-- SEARCH BAR-->
-    <div class="search-bar">
-      <input id="searchInput" type="text" placeholder="Search country, city, or place..." />
-      <button id="searchBtn">Search</button>
-    </div>
-  </header>
+  <div class="search-bar">
+    <input id="searchInput" type="text" placeholder="Search country, city, or place..." />
+    <button id="searchBtn">Search</button>
+  </div>
+</header>
 
-  <!-- MAIN CONTENT -->
+  <!-- MAIN -->
   <main class="container">
 
     <!-- LEFT PANEL -->
-    <div class="left-panel">
+    <section class="left-panel">
 
       <!-- COUNTRY INFO -->
-      <section id="countryInfo">
-        <p>Search for a country to see details</p>
-      </section>
-
-      <!-- PHOTO GALLERY -->
-      <section id="photoGallery"></section>
-
-      <!-- SHORTLIST -->
-      <div class="shortlist-section">
-        <h3>Shortlist</h3>
-        <div id="shortlistModal"></div>
-        <button id="openShortlist">Open Shortlist</button>
+      <div class="card">
+        <h3>Destination Info</h3>
+        <section id="countryInfo">
+          <p>Search for a destination to view details.</p>
+        </section>
       </div>
 
-    </div>
+      <!-- PHOTO GALLERY -->
+      <div class="card">
+        <h3>Explore Places</h3>
+        <section id="photoGallery"></section>
+      </div>
 
-    <div class="right-panel">
+      <!-- SHORTLIST -->
+      <div class="card shortlist-section">
+        <div class="section-header">
+          <h3>Shortlist</h3>
+          <button id="openShortlist">Toggle</button>
+        </div>
 
-  <!-- TRIPS CARD -->
-  <div class="card trip-section">
-    <h3>My Trips</h3>
-    <div id="tripList"></div>
-    <button id="createTripBtn">+ New Trip</button>
-  </div>
+        <div id="shortlistModal" class="hidden">
+          <p>No saved places yet.</p>
+        </div>
+      </div>
 
-  <!-- ITINERARY CARD -->
-  <div class="card itinerary-section">
-    <h3>Itinerary</h3>
-    <button id="addDayBtn">+ Add Day</button>
-    <div id="itineraryView"></div>
-  </div>
+    </section>
 
-  <div id="toast" class="toast hidden"></div>
-</div>
+    <!-- RIGHT PANEL -->
+    <aside class="right-panel">
+
+      <!-- TRIPS -->
+      <div class="card trip-section">
+        <h3>My Trips</h3>
+
+        <div id="tripList">
+          <p>No trips created yet.</p>
+        </div>
+
+        <button id="createTripBtn">+ New Trip</button>
+      </div>
+
+      <!-- ITINERARY -->
+      <div class="card itinerary-section">
+        <h3>Itinerary</h3>
+
+        <button id="addDayBtn">+ Add Day</button>
+
+        <div id="itineraryView">
+          <p>Select a trip to begin planning.</p>
+        </div>
+      </div>
+
+    </aside>
 
   </main>
 
-  <!-- scripts -->
+  <!-- TOAST -->
+  <div id="toast" class="toast hidden"></div>
+
+  <!-- MODAL -->
+  <div id="modal" class="modal hidden">
+    <div class="modal-content">
+      <h3 id="modalTitle">Enter Name</h3>
+
+      <input
+        id="modalInput"
+        type="text"
+        placeholder="Type here..."
+      />
+
+      <div class="modal-actions">
+        <button id="modalSave">Save</button>
+        <button id="modalCancel">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- JAVASCRIPT -->
   <script type="module" src="js/app.js"></script>
 
-  <div id="modal" class="modal hidden">
-  <div class="modal-content">
-    <h3 id="modalTitle">Enter Name</h3>
-    <input id="modalInput" type="text" />
-    <button id="modalSave">Save</button>
-    <button id="modalCancel">Cancel</button>
-  </div>
-</div>
 </body>
+</html>
